@@ -1,0 +1,53 @@
+
+import React from 'react';
+import Countdown from 'react-countdown';
+import RenderCountDown from '../../components/elements/RenderCountDown';
+import { Link } from 'react-router';
+import BG from "../../assets/images/backgrounds/coming-soon-page-bg.jpg"
+const page: React.FC = () => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+    }
+    return (
+        <div className="page-wrapper">
+            <section className="coming-soon-page full-height" style={{ height: '843px' }}>
+                <div className="coming-soon-page__bg" style={{ backgroundImage: `url(${BG})` }}></div>
+                <div className="coming-soon-page__content">
+                    <div className="inner">
+                        <div className="big-title">{`We're`} Coming Soon...</div>
+                        <div className="timer-box clearfix">
+                            <div className="countdown-timer">
+                                <div className="default-coundown">
+                                    <div className="box">
+                                        <Countdown date={Date.now() + 25 * 24 * 60 * 60 * 1000} renderer={RenderCountDown} />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="text">
+                            <p>
+                                Website is under construction. {`We'll`} be here soon with new<br />
+                                awesome site, Subscribe to be notified.
+                            </p>
+                        </div>
+                        <div className="coming-soon-page__subscribe-box">
+                            <form onSubmit={handleSubmit} className="subscribe-form" action="#">
+                                <input name='email' placeholder="Enter your email address" type="email" />
+                                <button type="submit" className="thm-btn coming-soon-page__btn">Send Massage<span><i
+                                    className="icon-diagonal-arrow"></i></span></button>
+                            </form>
+                            <div className="back_home">
+                                <Link to={"/"} className="thm-btn error-page__btn">
+                                    Back to home
+                                    <span><i className="icon-diagonal-arrow"></i></span>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    );
+};
+
+export default page;
